@@ -1,6 +1,6 @@
 {
   "env": {
-    "browser": true,
+    "browser": false,
     "es6": true,
     "jest": true
   },
@@ -9,10 +9,6 @@
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": ["error"],
-    "react/jsx-filename-extension": [1, {
-      "extensions": [".js", ".jsx"]
-    }],
-    "react/jsx-one-expression-per-line": 0,
     "import/no-named-as-default": 0,
     "import/no-named-as-default-member": 0,
     "import/no-extraneous-dependencies": ["error", {
