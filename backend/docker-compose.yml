@@ -4,7 +4,7 @@ services:
     image: prismagraphql/prisma:1.21
     restart: always
     ports:
-    - "4466:4466"
+      - '4466:4466'
     environment:
       PRISMA_CONFIG: |
         port: 4466
@@ -27,5 +27,14 @@ services:
       POSTGRES_PASSWORD: prisma
     volumes:
       - postgres:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - '7000:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: prisma
+      PGADMIN_DEFAULT_PASSWORD: prisma
 volumes:
   postgres:
