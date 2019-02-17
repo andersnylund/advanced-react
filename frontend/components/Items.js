@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import Item from './Item';
+import Pagination from './Pagination';
 
 const Center = styled.div`
   text-align: center;
@@ -29,8 +30,9 @@ export const ALL_ITEMS_QUERY = gql`
   }
 `;
 
-const Items = () => (
+const Items = props => (
   <Center>
+    <Pagination page={props.page} />
     <Query query={ALL_ITEMS_QUERY}>
       {({ data, error, loading }) => {
         if (loading) {
@@ -48,6 +50,7 @@ const Items = () => (
         );
       }}
     </Query>
+    <Pagination page={props.page} />
   </Center>
 );
 
