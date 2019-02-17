@@ -13,6 +13,7 @@ type Mutation {
   updateItem(id: ID!, title: String, description: String, price: Int): Item! # TODO add editing images
   deleteItem(id: ID!): Item
   signUp(email: String!, password: String!, name: String!): User!
+  signIn(email: String!, password: String!): User!
 }
 
 type Query {
