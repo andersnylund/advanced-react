@@ -6,6 +6,7 @@ import Form from './styles/Form';
 import Error from './ErrorMessage';
 
 import { CURRENT_USER_QUERY } from './User';
+
 const RESET_MUTATION = gql`
   mutation RESET_MUTATION(
     $resetToken: String!
@@ -61,7 +62,8 @@ class Reset extends React.Component {
             }}
           >
             <fieldset disabled={loading} aria-busy={loading}>
-              <h2> Reset your password reset </h2> <Error error={error} />
+              <h2>Reset your password reset</h2>
+              <Error error={error} />
               <label htmlFor="password">
                 Password
                 <input
