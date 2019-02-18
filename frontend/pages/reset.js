@@ -1,10 +1,6 @@
 import React from 'react';
-import CreateItem from '../components/CreateItem';
+import Reset from '../components/Reset';
 
-const Sell = () => (
-  <div>
-    <CreateItem />
-  </div>
-);
+const Sell = props => <Reset resetToken={props.query.resetToken} />;
 
 export default Sell;
