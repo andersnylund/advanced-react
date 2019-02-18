@@ -223,8 +223,10 @@ const Mutations = {
     // 2. Query the users current cart
     const [existingCartItem] = await ctx.db.query.cartItems(
       {
-        user: { id: userId },
-        item: { id: args.id },
+        where: {
+          user: { id: userId },
+          item: { id: args.id },
+        },
       },
       info,
     );
