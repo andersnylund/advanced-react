@@ -31,8 +31,8 @@ const DeleteItem = ({ children, id }) => (
         type="button"
         onClick={() => {
           if (confirm('Are you sure you want to delete this?')) {
-            deleteItemMutation().catch(error => {
-              alert(error.message);
+            deleteItemMutation().catch(err => {
+              alert(err.message);
             });
           }
         }}
