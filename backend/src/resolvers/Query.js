@@ -1,6 +1,7 @@
 // Here db calls could be inserted e.g. from another REST API
 
 const { forwardTo } = require('prisma-binding');
+const { hasPermission } = require('../utils');
 
 const Query = {
   items: forwardTo('db'),
@@ -19,6 +20,16 @@ const Query = {
       },
       info,
     );
+  },
+  async users(parent, args, ctx, info) {
+    // 1. Check if they are logged in
+    if (!ctx.request.userId) {
+      throw new Error('You must be logged in');
+    }
+    // 2. Check if the user has the permissions to query all the users
+    hasPermission(ctx.request.user, ['ADMIN', 'PERMISSIONUPDATE']);
+    // 3. If they do, query all the users
+    return ctx.db.query.users({}, info); // adding info will include the query from the frontend => the right fields will be returned
   },
 };
 
