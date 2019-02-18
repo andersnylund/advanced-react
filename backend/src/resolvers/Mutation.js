@@ -48,10 +48,11 @@ const Mutations = {
   },
 
   async deleteItem(parent, args, ctx, info) {
+    throw new Error('You are not allowed');
     const where = { id: args.id };
     // 1. find the item
     const item = await ctx.db.query.item({ where }, `{ id title }`);
-    // 2. check if they own that inte, or have the permission
+    // 2. check if they own that item, or have the permission
     // TODO
     // 3. delete it!
     return ctx.db.mutation.deleteItem({ where }, info);
