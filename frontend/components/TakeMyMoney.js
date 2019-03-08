@@ -26,8 +26,8 @@ const CREATE_ORDER_MUTATION = gql`
 const totalItems = cart =>
   cart.reduce((tally, cartItem) => tally + cartItem.quantity, 0);
 
-const onToken = (res, createOrderMutation) => {
-  createOrderMutation({
+const onToken = async (res, createOrderMutation) => {
+  const order = await createOrderMutation({
     variables: {
       token: res.id,
     },
@@ -46,7 +46,7 @@ const TakeMyMoney = props => (
             amount={calcTotalPrice(me.cart)}
             name="Sick Fits"
             description={`Order of ${totalItems(me.cart)} items`}
-            image={me.cart[0].item && me.cart[0].item.image}
+            image={me.cart.length && me.cart[0].item && me.cart[0].item.image}
             stripeKey="pk_test_m2IYOcqCjXJr8mOVrEsTDZ96"
             currency="USD"
             email={me.email}
