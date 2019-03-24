@@ -58,7 +58,9 @@
     "prettier": "^1.15.2"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ],
     "testPathIgnorePatterns": [
       "<rootDir>/.next/",
       "<rootDir>/node_modules/"
