@@ -3,6 +3,7 @@ function Person(name, foods) {
   this.foods = foods;
 }
 
+// eslint-disable-next-line func-names
 Person.prototype.fetchFavFoods = function() {
   return new Promise((resolve, reject) => {
     // simulating an API
