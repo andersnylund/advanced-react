@@ -27,11 +27,16 @@ const totalItems = cart =>
   cart.reduce((tally, cartItem) => tally + cartItem.quantity, 0);
 
 const onToken = async (res, createOrderMutation) => {
+  NProgress.start();
   const order = await createOrderMutation({
     variables: {
       token: res.id,
     },
   }).catch(err => alert(err.message));
+  Router.push({
+    pathname: '/order',
+    query: { id: order.data.createOrder.id },
+  });
 };
 
 const TakeMyMoney = props => (
