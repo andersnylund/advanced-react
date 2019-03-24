@@ -1,13 +1,13 @@
 import React from 'react';
-import CreateItem from '../components/CreateItem';
 import PleaseSignin from '../components/PleaseSignin';
+import Order from '../components/Order';
 
-const Sell = () => (
+const OrderPage = props => (
   <div>
     <PleaseSignin>
-      <CreateItem />
+      <Order id={props.query.id} />
     </PleaseSignin>
   </div>
 );
 
-export default Sell;
+export default OrderPage;
