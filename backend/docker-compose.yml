@@ -1,7 +1,7 @@
 version: '3'
 services:
   prisma:
-    image: prismagraphql/prisma:1.21
+    image: prismagraphql/prisma:1.30
     restart: always
     ports:
       - '4466:4466'
@@ -27,14 +27,5 @@ services:
       POSTGRES_PASSWORD: prisma
     volumes:
       - postgres:/var/lib/postgresql/data
-  pgadmin:
-    image: dpage/pgadmin4
-    depends_on:
-      - postgres
-    ports:
-      - '7000:80'
-    environment:
-      PGADMIN_DEFAULT_EMAIL: prisma
-      PGADMIN_DEFAULT_PASSWORD: prisma
 volumes:
   postgres:
